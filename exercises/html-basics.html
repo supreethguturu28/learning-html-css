@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- 
+    The DOCTYPE declaration tells the browser this is an HTML5 document.
+    Always put this at the very top of your HTML files.
+-->
+<html lang="en">
+<!-- 
+    The <html> element is the root element that wraps all content.
+    The 'lang' attribute helps screen readers and search engines.
+-->
+
+<head>
+    <!-- 
+        The <head> section contains metadata about the page.
+        This information is not displayed on the page itself.
+    -->
+    
+    <!-- Character encoding - tells browser how to interpret text -->
+    <meta charset="UTF-8">
+    
+    <!-- Makes the page responsive on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- The page title that appears in browser tabs -->
+    <title>HTML Basics - Learning Exercise</title>
+    
+    <!-- Link to external CSS file (we'll create this later) -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <!-- 
+        The <body> contains all visible content on the page.
+        Everything users see goes here.
+    -->
+
+    <!-- SEMANTIC HTML ELEMENTS -->
+    <!-- These elements give meaning to different parts of your page -->
+    
+    <header>
+        <!-- Header typically contains navigation, logo, or main heading -->
+        <h1>Welcome to HTML Basics!</h1>
+        <nav>
+            <!-- Navigation menus use <nav> element -->
+            <ul>
+                <li><a href="#headings">Headings</a></li>
+                <li><a href="#paragraphs">Paragraphs</a></li>
+                <li><a href="#lists">Lists</a></li>
+                <li><a href="#links">Links</a></li>
+                <li><a href="#images">Images</a></li>
+                <li><a href="#tables">Tables</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Main content of the page goes in <main> -->
+        
+        <section id="headings">
+            <!-- Sections group related content together -->
+            <h2>HTML Headings</h2>
+            <p>HTML has 6 levels of headings, from h1 (largest) to h6 (smallest):</p>
+            
+            <h1>This is an H1 heading</h1>
+            <h2>This is an H2 heading</h2>
+            <h3>This is an H3 heading</h3>
+            <h4>This is an H4 heading</h4>
+            <h5>This is an H5 heading</h5>
+            <h6>This is an H6 heading</h6>
+            
+            <!-- 
+                IMPORTANT: Use headings for structure, not just for size!
+                H1 should be the main topic, H2 for major sections, etc.
+            -->
+        </section>
+
+        <section id="paragraphs">
+            <h2>Paragraphs and Text Formatting</h2>
+            
+            <p>This is a regular paragraph. Paragraphs are the most common way to display text content.</p>
+            
+            <p>You can make text <strong>bold/important</strong> or <em>italic/emphasized</em>.</p>
+            
+            <p>There's also <mark>highlighted text</mark>, <small>small text</small>, and <del>deleted text</del>.</p>
+            
+            <p>For code, use <code>inline code</code> or:</p>
+            <pre><code>
+                // Multi-line code block
+                function hello() {
+                    return "Hello, World!";
+                }
+            </code></pre>
+            
+            <blockquote>
+                "This is a quote. Blockquotes are used for longer quotations."
+                <cite>- Citation goes here</cite>
+            </blockquote>
+        </section>
+
+        <section id="lists">
+            <h2>Lists</h2>
+            
+            <h3>Unordered List (bullets)</h3>
+            <ul>
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item with <strong>nested list</strong>:
+                    <ul>
+                        <li>Nested item 1</li>
+                        <li>Nested item 2</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Ordered List (numbers)</h3>
+            <ol>
+                <li>Step one</li>
+                <li>Step two</li>
+                <li>Step three</li>
+            </ol>
+            
+            <h3>Description List</h3>
+            <dl>
+                <dt>HTML</dt>
+                <dd>HyperText Markup Language - the structure of web pages</dd>
+                
+                <dt>CSS</dt>
+                <dd>Cascading Style Sheets - controls the appearance of web pages</dd>
+                
+                <dt>JavaScript</dt>
+                <dd>Programming language that adds interactivity to web pages</dd>
+            </dl>
+        </section>
+
+        <section id="links">
+            <h2>Links and Navigation</h2>
+            
+            <p>Links connect web pages together:</p>
+            
+            <!-- External link (opens in same tab) -->
+            <p><a href="https://www.mozilla.org/en-US/docs/Web/HTML">Learn more about HTML on MDN</a></p>
+            
+            <!-- External link (opens in new tab) -->
+            <p><a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML Tutorial</a></p>
+            
+            <!-- Internal link to another page -->
+            <p><a href="../index.html">Go to Homepage</a></p>
+            
+            <!-- Link to section on same page -->
+            <p><a href="#headings">Back to Headings section</a></p>
+            
+            <!-- Email link -->
+            <p><a href="mailto:someone@example.com">Send an email</a></p>
+            
+            <!-- Phone link -->
+            <p><a href="tel:+1234567890">Call us</a></p>
+        </section>
+
+        <section id="images">
+            <h2>Images</h2>
+            
+            <p>Images make websites more engaging:</p>
+            
+            <!-- 
+                The 'alt' attribute is crucial for accessibility.
+                It describes the image for screen readers and shows if image fails to load.
+            -->
+            <img src="https://via.placeholder.com/300x200/4CAF50/white?text=Sample+Image" 
+                 alt="A green placeholder image with sample text"
+                 width="300" 
+                 height="200">
+            
+            <p>You can also wrap images in links:</p>
+            <a href="https://via.placeholder.com/400x300" target="_blank">
+                <img src="https://via.placeholder.com/200x150/2196F3/white?text=Click+Me" 
+                     alt="A blue clickable placeholder image">
+            </a>
+        </section>
+
+        <section id="tables">
+            <h2>Tables</h2>
+            
+            <p>Tables display data in rows and columns:</p>
+            
+            <table border="1">
+                <!-- Table header -->
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City</th>
+                        <th>Occupation</th>
+                    </tr>
+                </thead>
+                
+                <!-- Table body -->
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>28</td>
+                        <td>New York</td>
+                        <td>Web Developer</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>34</td>
+                        <td>San Francisco</td>
+                        <td>Designer</td>
+                    </tr>
+                    <tr>
+                        <td>Mike Johnson</td>
+                        <td>42</td>
+                        <td>Chicago</td>
+                        <td>Project Manager</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Try This Exercise!</h2>
+            <div style="background-color: #f0f0f0; padding: 20px; margin: 20px 0; border-left: 4px solid #4CAF50;">
+                <h3>🎯 Your Task:</h3>
+                <ol>
+                    <li>Add a new section below this one</li>
+                    <li>Give it an id and heading</li>
+                    <li>Add a paragraph about yourself</li>
+                    <li>Create a list of your hobbies</li>
+                    <li>Add a link to your favorite website</li>
+                </ol>
+                <p><strong>Tip:</strong> Use the structure you see above as a guide!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <!-- Footer typically contains copyright, contact info, or additional links -->
+        <p>&copy; 2025 HTML Learning Project. Keep practicing! 🚀</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms Practice</title>
+    <style>
+        /* FORM STYLING */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .form-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .form-content {
+            padding: 40px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+
+        .form-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        /* FORM GROUP STYLING */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        /* INPUT STYLING */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        /* SPECIAL INPUT TYPES */
+        input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        input[type="color"] {
+            width: 60px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* CHECKBOX AND RADIO STYLING */
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        /* BUTTON STYLING */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        /* FIELDSET STYLING */
+        fieldset {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        legend {
+            background: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        /* PROGRESS AND METER */
+        progress,
+        meter {
+            width: 100%;
+            height: 25px;
+            margin: 10px 0;
+        }
+
+        /* FORM VALIDATION STYLES */
+        .error {
+            border-color: #e74c3c !important;
+            background-color: #fdf2f2;
+        }
+
+        .success {
+            border-color: #27ae60 !important;
+            background-color: #f2fdf3;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: #27ae60;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .form-header {
+                padding: 20px;
+            }
+            
+            .form-content {
+                padding: 20px;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .checkbox-group,
+            .radio-group {
+                flex-direction: column;
+            }
+        }
+
+        /* EXERCISE BOX */
+        .exercise-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .exercise-box h3 {
+            margin-bottom: 15px;
+        }
+
+        /* OUTPUT DISPLAY */
+        .output-display {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin-top: 15px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="form-header">
+            <h1>HTML Forms Mastery</h1>
+            <p>Learn all about form inputs and user interaction</p>
+        </div>
+
+        <div class="form-content">
+
+            <!-- BASIC TEXT INPUTS -->
+            <div class="form-section">
+                <h2>1. Basic Text Inputs</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="fullname">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter a secure password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website URL</label>
+                        <input type="url" id="website" name="website" placeholder="https://www.yoursite.com">
+                    </div>
+                </form>
+            </div>
+
+            <!-- NUMBER AND DATE INPUTS -->
+            <div class="form-section">
+                <h2>2. Numbers, Dates, and Special Inputs</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="13" max="120" placeholder="25">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthdate">Date of Birth</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appointment">Appointment Time</label>
+                        <input type="time" id="appointment" name="appointment">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="volume">Volume Level: <span id="volume-value">50</span>%</label>
+                        <input type="range" id="volume" name="volume" min="0" max="100" value="50" 
+                               oninput="document.getElementById('volume-value').textContent = this.value">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="color">Favorite Color</label>
+                        <input type="color" id="color" name="color" value="#3498db">
+                    </div>
+                </form>
+            </div>
+
+            <!-- CHECKBOXES AND RADIO BUTTONS -->
+            <div class="form-section">
+                <h2>3. Checkboxes and Radio Buttons</h2>
+                <form>
+                    <fieldset>
+                        <legend>Select Your Interests (Multiple Choice)</legend>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="interest-web" name="interests" value="web-development">
+                                <label for="interest-web">Web Development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="interest-design" name="interests" value="design">
+                                <label for="interest-design">Graphic Design</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="interest-mobile" name="interests" value="mobile">
+                                <label for="interest-mobile">Mobile Apps</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="interest-data" name="interests" value="data">
+                                <label for="interest-data">Data Science</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Experience Level (Single Choice)</legend>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="exp-beginner" name="experience" value="beginner">
+                                <label for="exp-beginner">Beginner</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="exp-intermediate" name="experience" value="intermediate">
+                                <label for="exp-intermediate">Intermediate</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="exp-advanced" name="experience" value="advanced">
+                                <label for="exp-advanced">Advanced</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="exp-expert" name="experience" value="expert">
+                                <label for="exp-expert">Expert</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <!-- SELECT DROPDOWNS -->
+            <div class="form-section">
+                <h2>4. Select Dropdowns</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" name="country">
+                            <option value="">Choose your country</option>
+                            <option value="us">United States</option>
+                            <option value="ca">Canada</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="de">Germany</option>
+                            <option value="fr">France</option>
+                            <option value="jp">Japan</option>
+                            <option value="au">Australia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills">Programming Languages (Hold Ctrl/Cmd for multiple)</label>
+                        <select id="skills" name="skills" multiple size="5">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="php">PHP</option>
+                            <option value="ruby">Ruby</option>
+                            <option value="go">Go</option>
+                            <option value="rust">Rust</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <!-- TEXTAREA AND FILE INPUTS -->
+            <div class="form-section">
+                <h2>5. Text Areas and File Uploads</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="bio">Tell us about yourself</label>
+                        <textarea id="bio" name="bio" rows="6" placeholder="Share your background, goals, and what brings you here..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resume">Upload Resume (PDF only)</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio Images</label>
+                        <input type="file" id="portfolio" name="portfolio" accept="image/*" multiple>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ADVANCED FORM ELEMENTS -->
+            <div class="form-section">
+                <h2>6. Advanced Form Elements</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="progress-demo">Project Progress</label>
+                        <progress id="progress-demo" max="100" value="75">75%</progress>
+                        <p>Project is 75% complete</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meter-demo">Skill Level: HTML/CSS</label>
+                        <meter id="meter-demo" min="0" max="10" value="8" high="7" optimum="9">8 out of 10</meter>
+                        <p>8/10 - Very Good!</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="search">Search</label>
+                        <input type="search" id="search" name="search" placeholder="Search tutorials...">
+                    </div>
+                </form>
+            </div>
+
+            <!-- COMPLETE FORM EXAMPLE -->
+            <div class="form-section">
+                <h2>7. Complete Contact Form</h2>
+                <form id="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="contact-name">Name <span class="required">*</span></label>
+                        <input type="text" id="contact-name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email <span class="required">*</span></label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="billing">Billing Question</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                            <label for="newsletter">Subscribe to our newsletter</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I agree to the <a href="#" style="color: #3498db;">Terms and Conditions</a> <span class="required">*</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+
+                <div id="form-output" class="output-display" style="display: none;"></div>
+            </div>
+
+            <!-- EXERCISE SECTION -->
+            <div class="exercise-box">
+                <h3>🎯 Form Building Challenge!</h3>
+                <p>Now it's your turn! Try building these forms:</p>
+                <ol>
+                    <li><strong>Registration Form:</strong> Name, email, password, confirm password, terms checkbox</li>
+                    <li><strong>Survey Form:</strong> Multiple choice questions using radio buttons and checkboxes</li>
+                    <li><strong>Job Application:</strong> Personal info, file upload for resume, dropdown for position</li>
+                    <li><strong>Feedback Form:</strong> Rating scale using radio buttons, text area for comments</li>
+                    <li><strong>Event Registration:</strong> Date picker, number input for attendees, meal preferences</li>
+                </ol>
+                <p><strong>Pro Tips:</strong></p>
+                <ul>
+                    <li>Always use proper labels for accessibility</li>
+                    <li>Add placeholder text to guide users</li>
+                    <li>Use appropriate input types for better mobile experience</li>
+                    <li>Include form validation and error messages</li>
+                    <li>Test your forms on different devices</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // FORM INTERACTION DEMO
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent actual form submission
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            const output = document.getElementById('form-output');
+            
+            let result = 'Form Data Submitted:\n\n';
+            
+            for (let [key, value] of formData.entries()) {
+                result += `${key}: ${value}\n`;
+            }
+            
+            output.textContent = result;
+            output.style.display = 'block';
+            
+            // Scroll to output
+            output.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add some basic form validation demo
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[required], textarea[required]');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() === '') {
+                        this.classList.add('error');
+                        showMessage(this, 'This field is required', 'error');
+                    } else {
+                        this.classList.remove('error');
+                        this.classList.add('success');
+                        showMessage(this, 'Looks good!', 'success');
+                    }
+                });
+            });
+        });
+
+        function showMessage(input, message, type) {
+            // Remove existing message
+            const existingMessage = input.parentNode.querySelector('.error-message, .success-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            // Add new message
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type + '-message';
+            messageDiv.textContent = message;
+            input.parentNode.appendChild(messageDiv);
+        }
+    </script>
+
+</body>
+</html>

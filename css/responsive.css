@@ -1,0 +1,341 @@
+/* RESPONSIVE DESIGN STYLES */
+/* 
+   This file contains media queries and responsive design patterns.
+   Mobile-first approach: Start with mobile styles, then add larger screen styles.
+*/
+
+/* Common breakpoints */
+/* 
+   Mobile: 320px - 768px
+   Tablet: 768px - 1024px  
+   Desktop: 1024px+
+*/
+
+/* MOBILE FIRST BASE STYLES */
+/* These styles apply to all screen sizes, starting with mobile */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* RESPONSIVE GRID SYSTEM */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+}
+
+.col {
+    flex: 1;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Column sizes for mobile (default) */
+.col-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+.col-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-5 { flex: 0 0 41.666%; max-width: 41.666%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+.col-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+.col-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+/* RESPONSIVE TYPOGRAPHY */
+html {
+    font-size: 14px; /* Mobile base size */
+}
+
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.2rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+/* RESPONSIVE UTILITIES */
+.hide-mobile { display: none; }
+.show-mobile { display: block; }
+.hide-tablet { display: block; }
+.show-tablet { display: none; }
+.hide-desktop { display: block; }
+.show-desktop { display: none; }
+
+/* TEXT ALIGNMENT */
+.text-center-mobile { text-align: center; }
+.text-left-mobile { text-align: left; }
+.text-right-mobile { text-align: right; }
+
+/* SPACING FOR MOBILE */
+.p-mobile-1 { padding: 0.5rem; }
+.p-mobile-2 { padding: 1rem; }
+.p-mobile-3 { padding: 1.5rem; }
+
+.m-mobile-1 { margin: 0.5rem; }
+.m-mobile-2 { margin: 1rem; }
+.m-mobile-3 { margin: 1.5rem; }
+
+/* ===== TABLET STYLES ===== */
+@media (min-width: 768px) {
+    html {
+        font-size: 15px; /* Slightly larger for tablets */
+    }
+    
+    .container {
+        padding: 0 2rem;
+    }
+    
+    /* Typography adjustments */
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.9rem; }
+    h3 { font-size: 1.6rem; }
+    h4 { font-size: 1.3rem; }
+    
+    /* Tablet column sizes */
+    .col-sm-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+    .col-sm-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+    .col-sm-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-sm-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+    .col-sm-5 { flex: 0 0 41.666%; max-width: 41.666%; }
+    .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-sm-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+    .col-sm-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+    .col-sm-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-sm-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+    .col-sm-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+    .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+    
+    /* Tablet visibility */
+    .hide-mobile { display: block; }
+    .show-mobile { display: none; }
+    .hide-tablet { display: none; }
+    .show-tablet { display: block; }
+    
+    /* Text alignment for tablet */
+    .text-center-tablet { text-align: center; }
+    .text-left-tablet { text-align: left; }
+    .text-right-tablet { text-align: right; }
+    
+    /* Tablet spacing */
+    .p-tablet-1 { padding: 0.75rem; }
+    .p-tablet-2 { padding: 1.5rem; }
+    .p-tablet-3 { padding: 2rem; }
+    
+    .m-tablet-1 { margin: 0.75rem; }
+    .m-tablet-2 { margin: 1.5rem; }
+    .m-tablet-3 { margin: 2rem; }
+}
+
+/* ===== DESKTOP STYLES ===== */
+@media (min-width: 1024px) {
+    html {
+        font-size: 16px; /* Standard desktop size */
+    }
+    
+    .container {
+        padding: 0 3rem;
+    }
+    
+    /* Typography for desktop */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.8rem; }
+    h4 { font-size: 1.5rem; }
+    h5 { font-size: 1.25rem; }
+    h6 { font-size: 1.1rem; }
+    
+    /* Desktop column sizes */
+    .col-md-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+    .col-md-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+    .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+    .col-md-5 { flex: 0 0 41.666%; max-width: 41.666%; }
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-md-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+    .col-md-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+    .col-md-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-md-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+    .col-md-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+    .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+    
+    /* Desktop visibility */
+    .hide-tablet { display: block; }
+    .show-tablet { display: none; }
+    .hide-desktop { display: none; }
+    .show-desktop { display: block; }
+    
+    /* Text alignment for desktop */
+    .text-center-desktop { text-align: center; }
+    .text-left-desktop { text-align: left; }
+    .text-right-desktop { text-align: right; }
+    
+    /* Desktop spacing */
+    .p-desktop-1 { padding: 1rem; }
+    .p-desktop-2 { padding: 2rem; }
+    .p-desktop-3 { padding: 3rem; }
+    
+    .m-desktop-1 { margin: 1rem; }
+    .m-desktop-2 { margin: 2rem; }
+    .m-desktop-3 { margin: 3rem; }
+}
+
+/* ===== LARGE DESKTOP STYLES ===== */
+@media (min-width: 1400px) {
+    html {
+        font-size: 18px; /* Larger for big screens */
+    }
+    
+    .container {
+        max-width: 1400px;
+        padding: 0 4rem;
+    }
+    
+    /* Large desktop column sizes */
+    .col-lg-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+    .col-lg-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+    .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+    .col-lg-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+    .col-lg-5 { flex: 0 0 41.666%; max-width: 41.666%; }
+    .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-lg-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+    .col-lg-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+    .col-lg-9 { flex: 0 0 75%; max-width: 75%; }
+    .col-lg-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+    .col-lg-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+    .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* ===== RESPONSIVE PATTERNS ===== */
+
+/* Responsive Images */
+.img-responsive {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Responsive Videos */
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-responsive iframe,
+.video-responsive object,
+.video-responsive embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive Tables */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+    min-width: 600px;
+    width: 100%;
+}
+
+/* Mobile Navigation Pattern */
+.nav-toggle {
+    display: block;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+}
+
+/* Responsive Card Layouts */
+.card-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr; /* Mobile: single column */
+}
+
+@media (min-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 1400px) {
+    .card-grid {
+        grid-template-columns: repeat(4, 1fr); /* Large: 4 columns */
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    /* Hide navigation and other non-essential elements */
+    .nav,
+    .footer,
+    .btn,
+    .hide-print {
+        display: none !important;
+    }
+    
+    /* Ensure good contrast for printing */
+    body {
+        color: #000;
+        background: #fff;
+    }
+    
+    /* Page breaks */
+    .page-break {
+        page-break-before: always;
+    }
+    
+    /* Avoid breaking inside elements */
+    .card,
+    .section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ===== ACCESSIBILITY RESPONSIVE FEATURES ===== */
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .card {
+        border: 2px solid;
+    }
+    
+    .btn {
+        border: 2px solid;
+    }
+}

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basics - Learning Exercise</title>
+    
+    <!-- INTERNAL CSS STYLES -->
+    <!-- We're putting CSS here for learning purposes. Normally, use external files. -->
+    <style>
+        /* 
+        CSS BASICS CHEAT SHEET
+        
+        CSS Rule Structure:
+        selector {
+            property: value;
+            property: value;
+        }
+        
+        Selectors:
+        - element: p, h1, div
+        - class: .classname
+        - id: #idname
+        - descendant: div p (p inside div)
+        - child: div > p (direct child p of div)
+        - pseudo: :hover, :focus, :nth-child()
+        */
+
+        /* RESET AND BASE STYLES */
+        * {
+            /* The universal selector (*) applies to all elements */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Makes sizing more predictable */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6; /* Improves readability */
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        /* TYPOGRAPHY */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em; /* em units are relative to parent font size */
+        }
+
+        h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin: 30px 0 15px 0;
+        }
+
+        h3 {
+            color: #e74c3c;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* CLASS SELECTORS (start with .) */
+        .highlight {
+            background-color: #f39c12;
+            padding: 5px;
+            border-radius: 3px;
+            color: white;
+        }
+
+        .important-text {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.1em;
+        }
+
+        .code-example {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto; /* Allows horizontal scrolling for long code */
+        }
+
+        /* ID SELECTORS (start with #) */
+        #special-section {
+            background-color: #9b59b6;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* BOX MODEL DEMONSTRATION */
+        .box-model-demo {
+            width: 300px;
+            height: 200px;
+            background-color: #3498db;
+            margin: 20px auto; /* auto centers the element */
+            padding: 20px;
+            border: 5px solid #2980b9;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* FLEXBOX LAYOUT */
+        .flex-container {
+            display: flex;
+            justify-content: space-around; /* Distributes items evenly */
+            align-items: center;
+            background-color: #ecf0f1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .flex-item {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1; /* Each item takes equal space */
+            margin: 0 10px;
+        }
+
+        /* GRID LAYOUT */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+            gap: 15px;
+            background-color: #ecf0f1;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .grid-item {
+            background-color: #e74c3c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        /* PSEUDO-CLASSES (interactive states) */
+        .interactive-button {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease; /* Smooth transitions */
+        }
+
+        .interactive-button:hover {
+            background-color: #229954;
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .interactive-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* RESPONSIVE DESIGN (Media Queries) */
+        @media (max-width: 768px) {
+            /* Styles for mobile devices */
+            .flex-container {
+                flex-direction: column;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr; /* Single column on mobile */
+            }
+            
+            .box-model-demo {
+                width: 90%;
+            }
+        }
+
+        /* ANIMATION EXAMPLE */
+        .animated-element {
+            width: 100px;
+            height: 100px;
+            background-color: #f39c12;
+            margin: 20px auto;
+            border-radius: 50%;
+            animation: bounce 2s infinite; /* Runs bounce animation infinitely */
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* POSITIONING EXAMPLES */
+        .position-relative {
+            position: relative;
+            background-color: #95a5a6;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .position-absolute {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        /* LISTS STYLING */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .styled-list li {
+            background-color: #3498db;
+            color: white;
+            margin: 5px 0;
+            padding: 10px;
+            border-left: 4px solid #2980b9;
+            border-radius: 3px;
+        }
+
+        .styled-list li:nth-child(even) {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Fundamentals Learning Guide</h1>
+
+    <section>
+        <h2>1. Typography and Text Styling</h2>
+        <p>This paragraph demonstrates basic text styling. CSS controls how text appears on your webpage.</p>
+        <p class="important-text">This paragraph has the "important-text" class applied to it.</p>
+        <p>You can <span class="highlight">highlight important words</span> using CSS classes.</p>
+    </section>
+
+    <section>
+        <h2>2. CSS Selectors</h2>
+        <p>CSS selectors are patterns used to select elements you want to style:</p>
+        <ul>
+            <li><strong>Element selector:</strong> p, h1, div</li>
+            <li><strong>Class selector:</strong> .classname (use for multiple elements)</li>
+            <li><strong>ID selector:</strong> #idname (use for unique elements)</li>
+            <li><strong>Descendant selector:</strong> div p (p inside div)</li>
+            <li><strong>Pseudo-class:</strong> :hover, :focus</li>
+        </ul>
+    </section>
+
+    <section id="special-section">
+        <h2>3. ID Selector Example</h2>
+        <p>This section has an ID of "special-section" and unique styling applied to it!</p>
+    </section>
+
+    <section>
+        <h2>4. The Box Model</h2>
+        <p>Every HTML element is a rectangular box with content, padding, border, and margin:</p>
+        <div class="box-model-demo">
+            <p>Content Area</p>
+            <p>Padding: 20px</p>
+            <p>Border: 5px</p>
+            <p>Margin: 20px auto</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>5. Flexbox Layout</h2>
+        <p>Flexbox makes it easy to create flexible layouts:</p>
+        <div class="flex-container">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>6. CSS Grid Layout</h2>
+        <p>Grid is perfect for two-dimensional layouts:</p>
+        <div class="grid-container">
+            <div class="grid-item">Grid Item 1</div>
+            <div class="grid-item">Grid Item 2</div>
+            <div class="grid-item">Grid Item 3</div>
+            <div class="grid-item">Grid Item 4</div>
+            <div class="grid-item">Grid Item 5</div>
+            <div class="grid-item">Grid Item 6</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>7. Interactive States</h2>
+        <p>CSS can respond to user interactions:</p>
+        <button class="interactive-button">Hover over me!</button>
+        <p><em>Try hovering and clicking the button above.</em></p>
+    </section>
+
+    <section>
+        <h2>8. Positioning</h2>
+        <div class="position-relative">
+            This div has position: relative
+            <div class="position-absolute">Absolute positioned</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>9. List Styling</h2>
+        <p>Transform boring lists into attractive elements:</p>
+        <ul class="styled-list">
+            <li>Custom styled list item 1</li>
+            <li>Custom styled list item 2</li>
+            <li>Custom styled list item 3</li>
+            <li>Custom styled list item 4</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>10. CSS Animation</h2>
+        <p>Add movement and life to your designs:</p>
+        <div class="animated-element"></div>
+        <p><em>The circle above bounces using CSS animation!</em></p>
+    </section>
+
+    <section>
+        <h2>CSS Code Examples</h2>
+        <div class="code-example">
+/* Basic CSS Rule */
+.my-class {
+    color: blue;
+    font-size: 18px;
+    margin: 10px;
+}
+
+/* Flexbox Container */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hover Effect */
+.button:hover {
+    background-color: #007bff;
+    transform: scale(1.05);
+}
+        </div>
+    </section>
+
+    <section>
+        <h2>🎯 Try This Exercise!</h2>
+        <div style="background-color: #d4edda; padding: 20px; margin: 20px 0; border-left: 4px solid #28a745; border-radius: 5px;">
+            <h3>Your Challenge:</h3>
+            <ol>
+                <li>Create a new CSS class called ".my-custom-style"</li>
+                <li>Apply it to a paragraph with your own colors and spacing</li>
+                <li>Try changing the font-family to something different</li>
+                <li>Add a border and border-radius to make it look like a card</li>
+                <li>Experiment with :hover effects</li>
+            </ol>
+            <p><strong>Tip:</strong> Open the browser's Developer Tools (F12) to experiment with CSS in real-time!</p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; margin-top: 50px; color: #666;">
+        <p>&copy; 2025 CSS Learning Journey. Keep experimenting! 🎨</p>
+    </footer>
+
+</body>
+</html>
